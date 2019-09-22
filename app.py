@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import Flask,request,render_template
 
 app=Flask(__name__)
 
 @app.route('/')
 def inicio():
-    return '<h1>hola mundo</h1>'
+    return render_template('index.html',name='julio')
 
 if __name__ == "__main__":
     app.run(port=1234)
