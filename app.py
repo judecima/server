@@ -5,7 +5,7 @@ app=Flask(__name__)
 @app.route('/')
 def inicio():
     name='julio'
-    return render_template('index.html',name=name)
+    return render_template('index.html',nombre=name)
 
 if __name__ == "__main__":
     app.run(port=1234)
