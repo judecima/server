@@ -3,10 +3,10 @@ import pandas as pd
 import numpy as np
 
 # Load the dataset in a dataframe object and include only four features as mentioned
-url = pd.read_excel('base.xlsx',header=0)
-df = pd.read_csv(url)
+df = pd.read_excel('basef.xlsx',header=0)
+#df = pd.read_csv(url)
 
-
+print(df.info())
 #generar dummies de las variables categoricas
 
 #generar variables generos
@@ -37,7 +37,7 @@ df.drop("sello", axis = 1, inplace=True)
 from sklearn.linear_model import LinearRegression
 
 lr=LinearRegression()
-x=df[['mes','ano','week','adventure','animation','comedy','drama','horror','romcom','superheroes','ARECIBO','ARUBA MEGAPLEX','BARCELONETA','BELTZ OUTLET','COLE BAY (MEGAPLEX)','DORADO','FAJARDO','FINE ARTS','FINE ARTS CAFE','GUAYAMA','ISABELA','LAS AMERICAS','LAS CATALINAS','LAS PIEDRAS','LOS COLOBOS','MARKET SQUARE','METRO','MONTEHIEDRA','PLAZA CAROLINA','PLAZA CAYEY','PLAZA DEL CARIBE','PLAZA DEL NORTE','PLAZA DEL SOL','PLAZA ESCORIAL','PLAZA GUAYNABO','PONCE TOWNE','RIO HONDO I','RIO HONDO II','SAN GERMAN','SAN PATRICIO','SANTA ISABEL CINEMAS','ST CROIX','ST. KITTS','VEGA ALTA','WESTERN PLAZA','YAUCO','ISLAS VIRGENES','METROPOLITANA','FOX','IND','LIO','LOC','PAR','PF','PPI','SPR','UNI','UPI','WB','WDI','WF']]
+x=df[['week','adventure','animation','comedy','drama','horror','romcom','superheroes','ARECIBO','ARUBA MEGAPLEX','BARCELONETA','BELTZ OUTLET','COLE BAY (MEGAPLEX)','DORADO','FAJARDO','FINE ARTS','FINE ARTS CAFE','GUAYAMA','ISABELA','LAS AMERICAS','LAS CATALINAS','LAS PIEDRAS','LOS COLOBOS','MARKET SQUARE','METRO','MONTEHIEDRA','PLAZA CAROLINA','PLAZA CAYEY','PLAZA DEL CARIBE','PLAZA DEL NORTE','PLAZA DEL SOL','PLAZA ESCORIAL','PLAZA GUAYNABO','PONCE TOWNE','RIO HONDO I','RIO HONDO II','SAN GERMAN','SAN PATRICIO','SANTA ISABEL CINEMAS','ST CROIX','ST. KITTS','VEGA ALTA','WESTERN PLAZA','YAUCO','ISLAS VIRGENES','METROPOLITANA','FOX','IND','LIO','LOC','PAR','PF','PPI','SPR','UNI','UPI','WB','WDI','WF']]
 y=df['admission']
 lr.fit(x,y)
 
@@ -54,3 +54,4 @@ lr = load('model.pkl')
 model_columns = list(x.columns)
 dump(model_columns, 'model_columns.pkl')
 print("Models columns dumped!")
+
