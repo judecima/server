@@ -1,0 +1,14 @@
+{%macro lista(name,values)%}
+
+    
+    <div class="row">
+        <div class="col-sm-3">
+          <select class="form-control" name={{name}}>
+            {% for value in values%}
+             <option value={{value}}>{{value}}</option>
+            
+            {%endfor%}
+          </select>
+        </div>
+      </div>
+{%endmacro%}

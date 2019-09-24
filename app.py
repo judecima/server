@@ -9,7 +9,19 @@ def inicio():
     zonas=['INTERIOR','ISLAS VIRGENES', 'METROPOLITANA']
     circuitos=['CARIBBEAN CINEMAS','INDEPENDENT','EL CINE']
     sellos=['BVI','FOX', 'IND', 'LIO', 'LOC','OTHERS' ,'PAR', 'PF', 'PPI', 'SPR', 'UNI', 'UPI', 'WB', 'WDI', 'WF']
-    return render_template('index.html',generos=generos,cines=cines,circuitos=circuitos,zonas=zonas,sellos=sellos)
+    sem=range(1,53)
+    semanas=list(sem)
+    return render_template('index.html',generos=generos,cines=cines,circuitos=circuitos,zonas=zonas,sellos=sellos,semanas=semanas)
+
+@app.route('/ver',methods=['POST'])
+def ver():
+    cine=request.form
+    cine1=request.form.values()
+    
+    
+    
+    return render_template('pantalla.html',cines=cine)
+
 
 if __name__ == "__main__":
-    app.run(port=1234)
+    app.run(debug=True,port=1234)
