@@ -108,10 +108,10 @@ def predict():
     
     # if lr:
         # try:
-            json_ = request.get_json()
-            print(json_)
-            res=make_response(jsonify({"mensaje":"funciona"}),200)
-            return res    
+    json_ = request.get_json()
+    print(json_)
+    res=make_response(jsonify({"mensaje":"funciona"}),200)
+    return res    
 
     """        
             query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
