@@ -18,7 +18,9 @@ $( document ).ready(function() {
 });
 
 function traer(){
-    fetch('https://jadsi.herokuapp.com/cines')
+    fetch('https://jadsi.herokuapp.com/cines',{
+        mode: 'no-cors'
+    })
         .then(res => res.json())
         .then(datos => {
             base=datos;
