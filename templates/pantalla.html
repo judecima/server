@@ -7,6 +7,12 @@
     <title>Vista</title>
 </head>
 <body>
-    
+    <ul>
+    {%for key, value in result.items()%}
+
+        <li>{{key}}:{{value}}</li>
+
+    {%endfor%}
+    </ul>
 </body>
 </html>

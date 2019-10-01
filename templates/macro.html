@@ -4,8 +4,9 @@
     <div class="row">
         <div class="col-sm-3">
           <select class="form-control" name={{name}}>
+              {% set counter = 0 -%}
             {% for value in values%}
-             <option value={{value}}>{{value}}</option>
+             <option value={{ counter + loop.index0 }}>{{value}}</option>
             
             {%endfor%}
           </select>

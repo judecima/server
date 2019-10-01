@@ -7,107 +7,99 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Jadsi Solutions</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
 </head>
 <body>
     <div class="container">
-            <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                      <h1 class="display-4">Bienvenidos a Screen Brain</h1>
-                      <p class="lead">Por medio de Regresion Lineal Multiple y el conocimiento acumulado permita demos una</p>
-                    </div>
-            </div>
+          
+        <form id="prede">
+            <div class="form-row align-items-center">
+              <div class="col-auto my-1">
+                <label class="mr-sm-2 sr-only" for="cine">Preference</label>
+                <select class="custom-select mr-sm-2" id="cine" name="cine">
+                  
+                  
+                </select>
+              </div>
 
-
-
-            <form id="analisis" action="http://localhost:1234/ver" method="POST">                
+              <div class="col-auto my-1">
+                  <label class="mr-sm-2 sr-only" for="sala">Preference</label>
+                  <select class="custom-select mr-sm-2" id="sala" name="sala">
+                    <option selected>Salas...</option>
                     
+                  </select>
+              </div>
+              
+              <div class="col-auto my-1">
+                  <label class="mr-sm-2 sr-only" for="pantalla">Preference</label>
+                  <select class="custom-select mr-sm-2" id="pantalla" name="pantalla">
+                    <option selected>Pantallas...</option>
+                    
+                  </select>
+              </div>
 
-                    <!--Opciones de genero-->
-                    <fieldset class="form-group">
-                      <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Generos</legend>
+
+              <div class="col-auto my-1">
+                  <label class="mr-sm-2 sr-only" for="genero">Preference</label>
+                  <select class="custom-select mr-sm-2" id="genero" name="genero">
+                    <option selected>Genero...</option>
+                    <option value="action">	action	</option>
+                    <option selected>Genero...</option>
+                    <option value="drama">	drama	</option>
+                    <option value="adventure">	adventure	</option>
+                    <option value="animation">	animation	</option>
+                    <option value="superheroes">	superheroes	</option>
+                    <option value="comedy">	comedy	</option>
+                    <option value="horror">	horror	</option>
+                  </select>
+                </div>
+
+                <div class="col-auto my-1">
+                    <label class="mr-sm-2 sr-only" for="productora">Preference</label>
+                    <select class="custom-select mr-sm-2" id="productora" name="productora">
+                        <option selected>Sello...</option>
+                        <option value="WB">WB</option>
+                        <option value="IND">IND</option>
+                        <option value="FOX">FOX</option>
+                        <option value="SPR">SPR</option>
+                        <option value="UPI">UPI</option>
+                        <option value="LOC">LOC</option>
+                        <option value="WDI">WDI</option>
+                        <option value="PPI">PPI</option>
+                        <option value="PAR">PAR</option>
+                        <option value="WF">WF</option>
+                        <option value="PF">PF</option>
+                    </select>
+                  </div>
+
+                  <div class="col-auto my-1">
+                      <label class="mr-sm-2 sr-only" for="Semana">Preference</label>
+                      <select class="custom-select mr-sm-2" id="semana" name="semana">
+                        <option selected>Semana...</option>
                         
-                        <div class="col-sm-10">
-                          {%from "macro.html" import lista%}
-                          {{lista('genero',generos)}}
-                        </div>
-                      </div>
-                    </fieldset>
-                    <hr>
-                    
-                      <!--Opciones de cines-->
-                      <fieldset class="form-group">
-                            <div class="row">
-                              <legend class="col-form-label col-sm-2 pt-0">Cines</legend>
-                              
-                              <div class="col-sm-10">
-                                
-                                {{lista('cine',cines)}}
-                              </div>
-                            </div>
-                          </fieldset>
-                          <hr>
-                    <!--Opciones de circuitos-->
-                        <fieldset class="form-group">
-                            <div class="row">
-                              <legend class="col-form-label col-sm-2 pt-0">Circuitos</legend>
-                              
-                              <div class="col-sm-10">
-                                
-                                {{lista('circuito',circuitos)}}
-                                
-                              </div>
-                            </div>
-                          </fieldset>
-                          <hr>
-
-                          <!--Opciones de circuitos-->
-                        <fieldset class="form-group">
-                                <div class="row">
-                                  <legend class="col-form-label col-sm-2 pt-0">Sellos</legend>
-                                  
-                                  <div class="col-sm-10">
-                                    
-                                    {{lista('sello',sellos)}}
-                                    
-                                  </div>
-                                </div>
-                              </fieldset>
-                              <hr>
-                        <!--Opciones de circuitos-->
-                        <fieldset class="form-group">
-                            <div class="row">
-                              <legend class="col-form-label col-sm-2 pt-0">Semanas</legend>
-                              
-                              <div class="col-sm-10">
-                                
-                                {{lista('semana',semanas)}}
-                                
-                              </div>
-                            </div>
-                          </fieldset>
-                          <hr>      
-                    
-                    <div class="form-group row">
-                      <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Prediccion</button>
-                      </div>
+                      </select>
                     </div>
-                  </form>
+              
+              <div class="col-auto my-1">
+                <button type="submit" class="btn btn-primary" id="predecir">Predecir</button>
+              </div>
+            </div>
+          </form>
+          <hr>
+          <div id="resultado">
+      
+          </div>
 
+    </div>  
 
-                  <ul>
-                      
-                          <li>{{ver}}</li>
-                      
-                  </ul>
-
-
-    </div>
     
 
+
+
+            
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{{url_for('static',filename='js/funciones.js')}}"></script> 
 </body>
 </html>
