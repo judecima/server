@@ -116,7 +116,7 @@ def predict():
     
     res1={'prediction': str(prediction)}
     res1={"hola":"12"}
-    res=make_response(jsonify(res1),200)
+    res=jsonify(res1)
     return res    
 
     """        
