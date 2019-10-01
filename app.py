@@ -5,6 +5,7 @@ import traceback
 import json
 import pandas as pd
 import numpy as np
+from cines import lista
 
 
 app=Flask(__name__)
