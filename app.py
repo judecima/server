@@ -100,17 +100,20 @@ def ver():
     
 """
 
-@app.route('/predict', methods=['POST','GET'])
+@app.route('/predict', methods=['POST'])
 def predict():
 
   
     
     
-    if lr:
-        try:
-            json_ = request.json
+    # if lr:
+        # try:
+            json_ = request.get_json()
             print(json_)
-            
+            res=make_response(jsonify({"mensaje":"funciona"}),200)
+            return res    
+
+    """        
             query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
             #query = query.reindex(columns=model_columns, fill_value=0)
             #d =  {'id': 'CS2_056', 'cost': 2, 'name': 'Tap'}
@@ -126,7 +129,7 @@ def predict():
     else:
         print ('Train the model first')
         return ('No model here to use')
-
+"""
 if __name__ == '__main__':
     try:
         port = int(sys.argv[1]) # This is for a command-line input
