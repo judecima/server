@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify,render_template, redirect, url_for
+from flask import Flask, request, jsonify,render_template, redirect, url_for,make_response
 from joblib import dump, load
 from flask_cors import CORS
 import traceback
@@ -28,7 +28,7 @@ def inicio():
     #sem=range(1,53)
     #semanas=list(sem)
     return render_template('index.html')#,generos=generos,cines=cines,circuitos=circuitos,zonas=zonas,sellos=sellos,semanas=semanas)
-
+"""
 @app.route('/ver',methods=['POST'])
 def ver():
     #generos = ['action','adventure','animation','comedy','drama','horror','romcom','superheroes']
@@ -85,7 +85,8 @@ def ver():
             #print(prediction)
             #print(prediction)
             #return render_template('ver.html',prediction)
-            return jsonify({'prediction': round(prediction[0])})
+            res = make_response(jsonify({'prediction': round(prediction[0])}), 200)
+            return res
             #return render_template('ver.html',valor=prediction)
         except:
 
@@ -97,7 +98,7 @@ def ver():
     
     
     
-
+"""
 
 @app.route('/predict', methods=['POST','GET'])
 def predict():
@@ -117,7 +118,7 @@ def predict():
 
             prediction = list(lr.predict(query))
             #return render_template('ver.html',prediction)
-            return jsonify({'prediction': str(prediction)})
+            return jsonify({'prediction': int(prediction[0])})
 
         except:
 
