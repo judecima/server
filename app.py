@@ -110,7 +110,7 @@ def predict():
         # try:
     json_ = request.get_json()
     print(json_)
-    res=make_response(jsonify({"mensaje":"funciona"}),200)
+    res=make_response(jsonify(json_),200)
     return res    
 
     """        
