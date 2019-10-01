@@ -24,7 +24,7 @@ function traer(){
             base=datos;
              
             cine_s.innerHTML=`
-            <option selected>Cine...</option>
+            <option value="error" selected>Cine...</option>
         `
     
                 for(let valor of datos){
@@ -37,7 +37,7 @@ function traer(){
             
         })
        
-        semana_s.innerHTML='<option selected>Semana...</option>';
+        semana_s.innerHTML='<option value="error" selected>Semana...</option>';
     
 
             for(i=1;i<38;i++){
@@ -57,7 +57,7 @@ function pantalla(){
         if (base[i].CINE==cine_s.value){
              cinee=base[i].pantalla;
             //  console.log(cinee[0])
-             pantalla_s.innerHTML='<option selected>Pantallas...</option>';
+             pantalla_s.innerHTML='<option value="error" selected>Pantallas...</option>';
              
             for(let j=0; j<cinee.length;j++){
                 // console.log(cinee[j]);
@@ -87,7 +87,7 @@ function salas() {
         if (base[i].CINE==cine_s.value){
              cinee=base[i].salas;
             //  console.log(cinee[0])
-             sala_s.innerHTML='<option selected>Salas...</option>';
+             sala_s.innerHTML='<option value="error" selected>Salas...</option>';
              
             for(let j=0; j<cinee.length;j++){
                 // console.log(cinee[j]);
@@ -117,10 +117,17 @@ function enviar(){
 cine_s.addEventListener('change',iniciar);
 predecir.addEventListener("submit",function(e){
     e.preventDefault();
- if(cine_s===null||sala_s===null||pantalla_s===null||semana_s===null||semana_s===null||sello_s===null||genero_s===null){
-    
     let datos=new FormData(predecir);
-    console.log(datos.get('cine'))
+    
+ 
+    
+    
+           
+    
+    
+    
+    
+    // console.log(datos.get('cine'))
     fetch('http://localhost:1234/ver',{
         method: 'POST',
         body: datos
@@ -131,20 +138,28 @@ predecir.addEventListener("submit",function(e){
             console.log(data.prediction)
             resultado.innerHTML='';
             resultado.innerHTML= `
-            <h1>La cantidad de entradas predecida es: ${data.prediction}</h1>
+            <div class="alert alert-success" role="alert">
+                La cantidad de entradas predecida es: ${data.prediction}
+            </div>    
             
             `
         
 
         })
+        .catch(function(){
 
- }else{
-
-    resultado.innerHTML='';
+            resultado.innerHTML='';
             resultado.innerHTML= `
-            <h1>Complete todos los campos</h1>
+            <div class="alert alert-danger" role="alert">
+                Complete todos los campos
+            </div>
             
             `
+        })
+        
+ 
+
+    
  }
 
-});
+);
