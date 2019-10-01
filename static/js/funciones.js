@@ -130,8 +130,7 @@ predecir.addEventListener("submit",function(e){
     // console.log(datos.get('cine'))
     fetch('https://jadsi.herokuapp.com/ver',{
         method: 'POST',
-        body: datos,
-        mode:'no-cors'
+        body: datos,      
 
     })
         .then(res => res.json())
