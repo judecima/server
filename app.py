@@ -118,8 +118,9 @@ def predict():
 
             prediction = list(lr.predict(query))
             #return render_template('ver.html',prediction)
-            return jsonify({'prediction': int(prediction[0])})
 
+            res= make_response(jsonify({'prediction': int(prediction[0])}))
+            return res
         except:
 
             return jsonify({'trace': traceback.format_exc()})
