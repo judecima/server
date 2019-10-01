@@ -171,7 +171,7 @@ pred.addEventListener("submit",function(e){
           return;
         }
         response.json().then(function(data) {
-          console.log(data.prediction)
+          console.log(data)
           resultado.innerHTML='';
           resultado.innerHTML=`
             <div class="alert alert-success" role="alert">
