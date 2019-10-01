@@ -115,7 +115,7 @@ def predict():
     prediction = list(lr.predict(query))
     
     res1={'prediction': str(prediction)}
-    res1={'hola':12}
+    res1={"hola":12}
     res=make_response(jsonify(res1),200)
     return res    
 
