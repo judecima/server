@@ -18,9 +18,7 @@ $( document ).ready(function() {
 });
 
 function traer(){
-    fetch('http://localhost:1234/cines',{
-        mode: 'no-cors'
-    })
+    fetch('https://jadsi.herokuapp.com/cines')
         .then(res => res.json())
         .then(datos => {
             base=datos;
@@ -130,7 +128,7 @@ predecir.addEventListener("submit",function(e){
     
     
     // console.log(datos.get('cine'))
-    fetch('http://localhost:1234/ver',{
+    fetch('https://jadsi.herokuapp.com/ver',{
         method: 'POST',
         body: datos,
         mode:'no-cors'
