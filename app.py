@@ -110,7 +110,10 @@ def predict():
         # try:
     json_ = request.get_json()
     print(json_)
-    res=make_response(jsonify(json_),200)
+    query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
+    prediction = list(lr.predict(query))
+    res1={"prediction": (prediction)}
+    res=make_response(jsonify(res1),200)
     return res    
 
     """        
