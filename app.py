@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify,render_template, redirect, url_for
 from joblib import dump, load
+from flask_cors import CORS
 import traceback
 import json
 import pandas as pd
@@ -7,6 +8,7 @@ import numpy as np
 from cines import lista
 
 app=Flask(__name__)
+CORS(app)
 
 @app.route('/cines')
 def cines():
