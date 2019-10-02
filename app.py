@@ -26,37 +26,24 @@ def inicio():
 @app.route('/predict', methods=['POST'])
 def predict():    
     
-     #if lr:
-      #   try:
-    json_ = request.get_json()
-    #print(json_)
-    query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
-    
-    #prediction = list(lr.predict(query))
-    #print(prediction[0])
-    
-    #res1={'prediction': str(prediction)}
-    res1={"hola":"15"}
-    res=jsonify(query)
-    return res    
+    if lr:
+       try:
+          json_ = request.get_json()
+          print(json_)        
+          query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
+          #query = query.reindex(columns=model_columns, fill_value=0)
+          #d =  {'id': 'CS2_056', 'cost': 2, 'name': 'Tap'}
+          #df = pd.DataFrame([d], columns=d.keys(),index=[0])
+          prediction = list(lr.predict(query))
+          #return render_template('ver.html',prediction)
+          return jsonify({'prediction': str(prediction)})
 
-"""        
-            query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
-            #query = query.reindex(columns=model_columns, fill_value=0)
-            #d =  {'id': 'CS2_056', 'cost': 2, 'name': 'Tap'}
-            #df = pd.DataFrame([d], columns=d.keys(),index=[0])
-
-            prediction = list(lr.predict(query))
-            #return render_template('ver.html',prediction)
-            return jsonify({'prediction': (prediction)})
-
-        except:
-
-            return jsonify({'trace': traceback.format_exc()})
+       except:
+          return jsonify({'trace': traceback.format_exc()})
     else:
         print ('Train the model first')
         return ('No model here to use')
-"""
+
 if __name__ == '__main__':
     try:
         port = int(sys.argv[1]) # This is for a command-line input
