@@ -30,9 +30,9 @@ def predict():
       #   try:
     json_ = request.get_json()
     #print(json_)
-    #query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
+    query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
     
-    prediction = lr.predict(query)
+    #prediction = lr.predict(query)
     print(prediction[0])
     
     #res1={'prediction': str(prediction)}
