@@ -26,16 +26,16 @@ def inicio():
 @app.route('/predict', methods=['POST'])
 def predict():    
     
-    # if lr:
-        # try:
+     #if lr:
+      #   try:
     json_ = request.get_json()
     print(json_)
-    #query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
+    query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
     
     #prediction = list(lr.predict(query))
     
     #res1={'prediction': str(prediction)}
-    res1={"hola":"12"}
+    res1={"hola":"15"}
     res=jsonify(res1)
     return res    
 
