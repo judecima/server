@@ -37,7 +37,7 @@ def predict():
     
     #res1={'prediction': str(prediction)}
     res1={"hola":"15"}
-    res=jsonify(res1)
+    res=jsonify(query)
     return res    
 
 """        
