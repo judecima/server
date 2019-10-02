@@ -32,7 +32,7 @@ def predict():
     print(json_)
     query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
     
-    prediction = list(lr.predict(query))
+    #prediction = list(lr.predict(query))
     
     #res1={'prediction': str(prediction)}
     res1={"hola":"15"}
