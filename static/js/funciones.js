@@ -10,6 +10,7 @@ let sello_s=document.querySelector("#productora");
 let genero_s=document.querySelector("#genero");
 let resultado=document.querySelector("#resultado");
 let base=[];
+let salas_p=0;
 
 
 
@@ -98,6 +99,7 @@ function salas() {
         
         if (base[i].CINE==cine_s.value){
              cinee=base[i].salas;
+             salas_p=base[i].salas;
             //  console.log(cinee[0])
             sala_s.innerHTML=""; 
             sala_s.innerHTML='<option value="error" selected>Salas...</option>';
@@ -154,8 +156,9 @@ pred.addEventListener("submit",function(e){
     if(pantalla_s.value != '2D'){
         valores[pantalla_s.value]=1
     }
-        
-    
+    resultado.innerHTML='';    
+    for(let t=0;t<salas_p.length;t++){
+        valores["salas"]=t;
     fetch(`${window.origin}/predict`,{
         method:"POST",
         credentials:"include",
@@ -172,10 +175,10 @@ pred.addEventListener("submit",function(e){
         }
         response.json().then(function(data) {
           console.log(data)
-          resultado.innerHTML='';
-          resultado.innerHTML=`
+          
+          resultado.innerHTML+=`
             <div class="alert alert-success" role="alert">
-                 El valor predecido es: ${data.prediction}
+                 Sala ${t+1} El valor predecido es: ${data.prediccion}
             </div>
           `
         });
@@ -183,4 +186,5 @@ pred.addEventListener("submit",function(e){
       .catch(function(error) {
         console.log("Fetch error: " + error);
     });
+    }
 })

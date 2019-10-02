@@ -29,15 +29,15 @@ def predict():
     if lr:
        try:
           json_ = request.get_json()
-          print(json_)        
-          prediction=pd.DataFrame(json_)
-          #query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
+          #print(json_)        
+          #prediction=pd.DataFrame(json_)
+          query = pd.get_dummies(pd.DataFrame(json_,index=[0]))
           #query = query.reindex(columns=model_columns, fill_value=0)
           #d =  {'id': 'CS2_056', 'cost': 2, 'name': 'Tap'}
           #df = pd.DataFrame([d], columns=d.keys(),index=[0])
-          #prediction = list(lr.predict(query))
+          prediction = list(lr.predict(query))
           #return render_template('ver.html',prediction)
-          return jsonify(prediction)
+          return jsonify({'prediccion':round(prediction[0])})
 
        except:
           return jsonify({'trace': traceback.format_exc()})
