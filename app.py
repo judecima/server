@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify,render_template, redirect, url_for,make_response
-from joblib import dump, load
+from modelo import load_object
 from flask_cors import CORS
 import traceback
 import json
 import pandas as pd
 import numpy as np
 from cines import lista
-
+import pickle
 
 app=Flask(__name__)
 CORS(app)
@@ -51,9 +51,12 @@ if __name__ == '__main__':
     except:
         port = 1234 # If you don't provide any port the port will be set to 12345
 
-    lr = load("model.pkl") # Load "model.pkl"
+    #lr = load("model.pkl") # Load "model.pkl"
+    # cargamos cuando haga falta
+    lr = load_object('modelo.pkl')
+    
     print ('Model loaded')
-    model_columns = load("model_columns.pkl") # Load "model_columns.pkl"
-    print ('Model columns loaded')
+    #model_columns = load("model_columns.pkl") # Load "model_columns.pkl"
+    #print ('Model columns loaded')
 
     app.run(port=port, debug=True)

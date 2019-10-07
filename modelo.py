@@ -1,6 +1,7 @@
 # Import dependencies
 import pandas as pd
 import numpy as np
+import pickle 
 
 # Load the dataset in a dataframe object and include only four features as mentioned
 
@@ -54,7 +55,7 @@ y=df['admission']
 
 
 lr.fit(x,y)
-
+"""
 # Save your model
 #from sklearn.externals import joblib
 from joblib import dump, load
@@ -69,3 +70,18 @@ model_columns = list(x.columns)
 dump(model_columns, 'model_columns.pkl')
 print("Models columns dumped!")
 print(df.info())
+"""
+
+
+#definimos funciones de guardar y cargar
+def save_object(filename, object):
+	with open(''+filename, 'wb') as file:
+		pickle.dump(object, file)
+ 
+def load_object(filename):
+	with open(''+filename ,'rb') as f:
+		loaded = pickle.load(f)
+	return loaded
+ 
+# guardamos los objetos que necesitaremos mas tarde
+save_object('modelo.pkl', lr)

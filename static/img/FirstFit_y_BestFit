@@ -1,0 +1,50 @@
+//Algoritmos First Fit
+    public void FirstFit(List<Proceso> colaNuevo){
+        for (Iterator<Proceso> itr = colaNuevo.getListProceso().iterator(); itr.hasNext();){
+            Proceso proceso = itr.next();
+            for (Particion particion : listParticion){
+                if (particion.getEstado()==false && particion.getTamParticion() >= proceso.getTamProceso() ){
+                    particion.addProceso(proceso);
+                    particion.setEstado(true);
+                    itr.remove();
+                    break;
+                }
+            }
+        }   
+    }
+
+
+
+//Algoritmo Best Fit
+    public void runBestFit(List<Proceso> colaNuevo) {
+        ordenarListaParticiones();
+        int clock = 0;
+        Iterator<Proceso> itProceso = colaNuevo.iterator();
+        while(!colaNuevo.isEmpty()){
+            while (itProceso.hasNext()) {
+                imprimirProcesoPorConsola(clock);
+                Proceso proceso = itProceso.next();
+                int tamEfectivoLibre = 99999;
+                int resguardoIndexParticion = 0;
+                Boolean particionValida = false;
+                for (Particion particion : this.listParticion) {
+                    if (particion.getEstado()) {
+                        final int calculoTamParticion = particion.getTamParticion() - proceso.getTamProceso();
+                        if (calculoTamParticion >= 0 && calculoTamParticion <= tamEfectivoLibre) {
+                            tamEfectivoLibre = calculoTamParticion;
+                            resguardoIndexParticion = this.listParticion.indexOf(particion);
+                            particionValida = true;
+                        }
+                    }
+                }
+                if (particionValida) {
+                    this.listParticion.get(resguardoIndexParticion).addProceso(proceso);
+                    itProceso.remove();
+                    break;
+                }
+                clock += 1;
+                liberarMemoria(clock);
+            }
+        }
+        imprimirProcesoPorConsola(clock);
+    }
